@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #000, #111);
+    overflow: hidden;
+  }
+
+  .flame, .candle, .message {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  /* 🪔 Diya stage */
+  .diya {
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(to bottom, #ffb347, #ffcc33);
+    border-radius: 0 0 80px 80px;
+    position: relative;
+    box-shadow: 0 0 40px #ffcc33;
+  }
+
+  .flame {
+    width: 20px;
+    height: 40px;
+    background: radial-gradient(circle, #ffdf80, #ff6600);
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: flicker 0.15s infinite;
+  }
+
+  @keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-52%) scale(1.05); opacity: 0.9; }
+    100% { transform: translateX(-48%) scale(0.95); opacity: 1; }
+  }
+
+  /* 🕯️ Candle stage */
+  .candle {
+    width: 40px;
+    height: 100px;
+    background: linear-gradient(to bottom, #fff, #ddd);
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.4);
+  }
+
+  /* 🎉 Happy Diwali text */
+  .message {
+    font-family: "Poppins", sans-serif;
+    font-size: 3em;
+    color: gold;
+    text-shadow: 0 0 20px #ffcc33;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #ffcc33; }
+    to { text-shadow: 0 0 30px #ff9933, 0 0 60px #ff6600; }
+  }
+</style>
+</head>
+<body>
+
+<div class="diya" id="diya">
+  <div class="flame"></div>
+</div>
+
+<div class="candle" id="candle"></div>
+<div class="message" id="message">Happy Diwali ✨</div>
+
+<script>
+  const diya = document.getElementById("diya");
+  const candle = document.getElementById("candle");
+  const message = document.getElementById("message");
+
+  // Step 1: show diya
+  diya.style.opacity = 1;
+
+  // Step 2: switch to candle
+  setTimeout(() => {
+    diya.style.opacity = 0;
+    candle.style.opacity = 1;
+  }, 2500);
+
+  // Step 3: switch to message
+  setTimeout(() => {
+    candle.style.opacity = 0;
+    message.style.opacity = 1;
+  }, 5000);
+</script>
+
+</body>
+</html>
